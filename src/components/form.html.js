@@ -8,7 +8,8 @@ export default `
           <b-form-group :state="errors.length === 0" label="Název"
             label-for="nazev-input" :invalid-feedback="errors[0]"
           >
-            <b-form-input id="nazev-input" v-model="nazev" :state="errors.length === 0">
+            <b-form-input id="nazev-input" v-model="nazev" 
+              :state="errors.length === 0" :disabled="disabled">
             </b-form-input>
           </b-form-group>
         </validation-provider>
@@ -23,7 +24,7 @@ export default `
             label-for="stadium-input" :invalid-feedback="errors[0]"
           >
             <b-form-select id="stadium-input" v-model="stadium"
-            :state="errors.length === 0" :options="stateOpts">
+            :state="errors.length === 0" :options="stateOpts" :disabled="disabled">
             </b-form-select>
           </b-form-group>
         </validation-provider>
@@ -34,7 +35,8 @@ export default `
           <b-form-group :state="errors.length === 0" label="Poloha - GPS souřadnice" 
             label-for="poloha-input" :invalid-feedback="errors[0]"
           >
-            <b-form-input id="poloha-input" v-model="poloha" :state="errors.length === 0">
+            <b-form-input id="poloha-input" v-model="poloha" 
+              :state="errors.length === 0" :disabled="disabled">
             </b-form-input>
           </b-form-group>
         </validation-provider>
@@ -46,7 +48,7 @@ export default `
             label-for="cena-input" :invalid-feedback="errors[0]"
           >
             <b-form-input id="cena-input" type="number"
-              v-model="cena" :state="errors.length === 0">
+              v-model="cena" :state="errors.length === 0" :disabled="disabled">
             </b-form-input>
           </b-form-group>
         </validation-provider>
@@ -60,14 +62,14 @@ export default `
             label-for="popis-input" :invalid-feedback="errors[0]"
           >
             <b-form-textarea rows="5" id="popis-input"
-              v-model="popis" :state="errors.length === 0">
+              v-model="popis" :state="errors.length === 0" :disabled="disabled">
             </b-form-textarea>
           </b-form-group>
         </validation-provider>
       </div>
     </div>
 
-    <b-button type="submit" class="mt-3" block :disabled="invalid">
+    <b-button v-if="!disabled" type="submit" class="mt-3" block :disabled="invalid">
       Save
     </b-button>
   </form>

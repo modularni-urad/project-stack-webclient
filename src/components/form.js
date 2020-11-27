@@ -14,7 +14,10 @@ export default {
     }
   },
   computed: {
-    stateOpts: () => _.map(STADIUM_LABELS, (v, k) => ({ value: k, text: v }))
+    stateOpts: () => _.map(STADIUM_LABELS, (v, k) => ({ value: k, text: v })),
+    disabled: function () {
+      return this.$props.item && this.$store.getters.UID !== this.$props.item.manager
+    }
   },
   created () {
     if (this.$props.item) {

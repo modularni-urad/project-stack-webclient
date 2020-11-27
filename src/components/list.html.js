@@ -30,9 +30,7 @@ export default `
         </a>
       </template>
       <template v-slot:cell(actions)="data">
-        <b-button disabled="$store.getters.UID === data.item.manager"
-          size="sm" variant="primary"
-          v-on:click="edit(data.item)">
+        <b-button size="sm" variant="primary" v-on:click="edit(data.item)">
           <i class="fas fa-edit"></i> upravit
         </b-button>
       </template>

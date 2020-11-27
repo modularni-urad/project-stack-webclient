@@ -55,10 +55,6 @@ export default {
     setPageSize: function (newSize) {
       this.perPage = newSize
     },
-    detail: function (item) {
-      this.$data.currDetail = item.id
-      this.$bvModal.show('modal-detail')
-    },
     add: function () {
       this.$data.curr = null
       this.$bvModal.show('modal-add')
