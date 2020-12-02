@@ -1,7 +1,7 @@
 /* global axios, API, _ */
 import ItemForm from './form.js'
 import template from './list.html.js'
-import { STADIUM_LABELS } from './consts.js'
+import { STADIUM_LABELS, ZANR_LABELS } from './consts.js'
 
 export default {
   data: () => {
@@ -13,6 +13,7 @@ export default {
         { key: 'manager', label: 'Manažer' },
         { key: 'cena', label: 'Cena', sortable: true },
         { key: 'stadium', label: 'Stadium', sortable: true },
+        { key: 'zanr', label: 'Žánr', sortable: true },
         { key: 'actions', label: '' }
       ],
       items: [],
@@ -26,7 +27,8 @@ export default {
     }
   },
   filters: {
-    stadium: (value) => STADIUM_LABELS[value]
+    stadium: (value) => STADIUM_LABELS[value],
+    zanr: (value) => ZANR_LABELS[value]
   },
   methods: {
     myProvider (ctx) {
@@ -36,8 +38,8 @@ export default {
         sort: ctx.sortBy ? `${ctx.sortBy}:${ctx.sortDesc ? 'desc' : 'asc'}` : 'id:asc'
       }
       let data = null
-      const promise = axios.get(`${API}/projectstack/projekty`, { params })
-      return promise.then(res => {
+      return axios.get(`${API}/projectstack/projekty`, { params })
+        .then(res => {
         this.totalRows = res.data.pagination.total
           ? res.data.pagination.total : this.totalRows
         data = res.data.data
@@ -48,7 +50,8 @@ export default {
       }).then(res => {
         return data
       }).catch(err => {
-        console.log(err)
+        const message = err.response.data
+        this.$store.dispatch('toast', { message, type: 'error' })
         return []
       })
     },
@@ -66,7 +69,7 @@ export default {
     onItemSubmit: function (item) {
       this.curr
         ? Object.assign(this.curr, item)
-        : this.$data.items.push(item)
+        : this.$refs.table.refresh()
       this.$bvModal.hide('modal-add')
     }
   },

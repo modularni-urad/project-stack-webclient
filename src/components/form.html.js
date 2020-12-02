@@ -18,7 +18,7 @@ export default `
     </div>
 
     <div class="row">
-      <div class="col-sm-4">
+      <div class="col-sm-3">
         <validation-provider rules="required" v-slot="{ errors }">
           <b-form-group :state="errors.length === 0" label="Stadium" 
             label-for="stadium-input" :invalid-feedback="errors[0]"
@@ -30,7 +30,19 @@ export default `
         </validation-provider>
       </div>
 
-      <div class="col-sm-4">
+      <div class="col-sm-3">
+        <validation-provider rules="required" v-slot="{ errors }">
+          <b-form-group :state="errors.length === 0" label="Žánr" 
+            label-for="zanr-input" :invalid-feedback="errors[0]"
+          >
+            <b-form-select id="zanr-input" v-model="zanr"
+            :state="errors.length === 0" :options="zanrOpts" :disabled="disabled">
+            </b-form-select>
+          </b-form-group>
+        </validation-provider>
+      </div>
+
+      <div class="col-sm-3">
         <validation-provider rules="required" v-slot="{ errors }">
           <b-form-group :state="errors.length === 0" label="Poloha - GPS souřadnice" 
             label-for="poloha-input" :invalid-feedback="errors[0]"
@@ -42,7 +54,7 @@ export default `
         </validation-provider>
       </div>
 
-      <div class="col-sm-4">
+      <div class="col-sm-3">
         <validation-provider rules="" v-slot="{ errors }">
           <b-form-group :state="errors.length === 0" label="Cena"
             label-for="cena-input" :invalid-feedback="errors[0]"

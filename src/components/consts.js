@@ -20,3 +20,23 @@ export const STADIUM = {
   VYBERKO: 'vyberko',
   REALIZACE: 'realizac'
 }
+
+export const ZANR = {
+  ZIVPROS: 'ziv_pros',
+  DOPRAVA: 'doprava',
+  BYDLENI: 'bydleni',
+  SPRAVA: 'sprava',
+  SOCIAL: 'social',
+  KULTURA: 'kultura',
+  FREETIME: 'volnycas'
+}
+
+export const ZANR_LABELS = {
+  'ziv_pros': 'Živ. prostředí',
+  'doprava': 'Doprava',
+  'bydleni': 'Bydlení',
+  'sprava': 'Efektivní správa',
+  'social': 'Sociál',
+  'kultura': 'Kultura',
+  'volnycas': 'Volný čas'
+}

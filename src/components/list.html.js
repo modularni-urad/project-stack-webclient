@@ -13,7 +13,7 @@ export default `
     </div>
 
     <b-table small striped hover sort-icon-left no-local-sorting
-      id="maps-table"
+      ref="table"
       primary-key="id"
       :current-page="currentPage"
       :per-page="perPage"
@@ -29,6 +29,12 @@ export default `
           {{ data.item.nazev }}
         </a>
       </template>
+      <template v-slot:cell(stadium)="data">
+        {{ data.item.stadium | stadium }}
+      </template>
+      <template v-slot:cell(zanr)="data">
+        {{ data.item.zanr | zanr }}
+      </template>
       <template v-slot:cell(actions)="data">
         <b-button size="sm" variant="primary" v-on:click="edit(data.item)">
           <i class="fas fa-edit"></i> upravit
@@ -37,7 +43,7 @@ export default `
     </b-table>
 
     <b-pagination v-model="currentPage" 
-      :total-rows="totalRows" :per-page="perPage" aria-controls="maps-table">
+      :total-rows="totalRows" :per-page="perPage">
     </b-pagination>
 
     <b-dropdown id="pagesize-dropup" dropup text="Velikost stránky"

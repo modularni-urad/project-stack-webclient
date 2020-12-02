@@ -1,5 +1,5 @@
 /* global Vue, axios, API, _, moment */
-import { STADIUM_LABELS } from './consts.js'
+import { STADIUM_LABELS, ZANR_LABELS } from './consts.js'
 import template from './form.html.js'
 
 export default {
@@ -10,11 +10,13 @@ export default {
       manager: '',
       cena: '',
       poloha: '',
-      stadium: ''
+      stadium: '',
+      zanr: ''
     }
   },
   computed: {
     stateOpts: () => _.map(STADIUM_LABELS, (v, k) => ({ value: k, text: v })),
+    zanrOpts: () => _.map(ZANR_LABELS, (v, k) => ({ value: k, text: v })),
     disabled: function () {
       return this.$props.item && this.$store.getters.UID !== this.$props.item.manager
     }
