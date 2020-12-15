@@ -1,13 +1,12 @@
 # Mapa pro zobrazení projektů v zásobníku
 
-API pro management vodoměrů (odběrným místech, OM) a jejich stavů.
-Umí dálkový odečet přes:
-- Projektový zásobník [TTN](https://www.thethingsnetwork.org/) infrastrukturu.
+Mapka pro vizualizaci projektů v zásobníku.
+Vhodná na jakýkoli existující web.
 
 ## Jak přidat na web
 
 Příklad je v [index.html](index.html).
-Do stránky je nutné přidat tyto skripty:
+Do stránky je [nutné přidat skripty pro leaflet a axios](index.html#L10):
 
 ```
 <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.min.js"></script>
@@ -18,6 +17,6 @@ Do stránky je nutné přidat tyto skripty:
 <script src="app.js"></script>
 ```
 
-Na stránce udělat div pro mapku.
-Zavolat funckci pridejMapuProjektu s náležitými parametry.
+Na stránce [udělat div pro mapku](index.html#L25).
+[Zavolat funckci pridejMapuProjektu](index.html#L30) s náležitými parametry.
 
