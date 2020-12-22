@@ -9,7 +9,6 @@ export default {
       fields: [
         { key: 'id', label: 'ID', sortable: true },
         { key: 'nazev', label: 'Název', sortable: true },
-        { key: 'popis', label: 'Popis' },
         { key: 'manager', label: 'Manažer' },
         { key: 'cena', label: 'Cena', sortable: true },
         { key: 'stadium', label: 'Stadium', sortable: true },
