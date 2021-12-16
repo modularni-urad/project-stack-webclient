@@ -1,13 +1,17 @@
+export const ROUTE_NAMES = {
+  list: 'projectlist',
+  // detail: 'taskdetail'
+}
 
 export const STADIUM_LABELS = {
-  'draft': 'Nový',
-  'idea': 'Hotový',
-  'studie': 'Studie',
-  'dur': 'Pořizování územního rozhodnutí',
-  'dsp': 'Pořizování stav. povolení',
-  'dpp': 'Pořizování dokum. pro provedení',
-  'vyberko': 'Výběrové řízení',
-  'realizac': 'V realizaci'
+  'draft': 'nový',
+  'idea': 'idea',
+  'studie': 'studie',
+  'dur': 'pořizování územního rozhodnutí',
+  'dsp': 'pořizování stav. povolení',
+  'dpp': 'pořizování dokum. pro provedení',
+  'vyberko': 'výběrové řízení',
+  'realizac': 'v realizaci'
 }
 
 export const STADIUM = {
@@ -40,3 +44,4 @@ export const ZANR_LABELS = {
   'kultura': 'Kultura',
   'volnycas': 'Volný čas'
 }
+export const VIEWNAME = 'projekty'

@@ -1,0 +1,7 @@
+apps:
+  - module: ./index.js
+    url: https://modurad.otevrenamesta.cz/omstredni/projekty/
+
+user:
+  username: vencax
+  password: jflsjfslkjf

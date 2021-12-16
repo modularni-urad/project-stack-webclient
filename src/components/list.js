@@ -1,79 +1,31 @@
-/* global axios, API, _ */
-import ItemForm from './form.js'
-import template from './list.html.js'
-import { STADIUM_LABELS, ZANR_LABELS } from './consts.js'
+// import Actions from './actions.js'
+// import { stadium, zanr } from './filters.js'
 
 export default {
-  data: () => {
-    return {
-      fields: [
-        { key: 'id', label: 'ID', sortable: true },
-        { key: 'nazev', label: 'Název', sortable: true },
-        { key: 'manager', label: 'Manažer' },
-        { key: 'cena', label: 'Cena', sortable: true },
-        { key: 'stadium', label: 'Stadium', sortable: true },
-        { key: 'zanr', label: 'Žánr', sortable: true },
-        { key: 'actions', label: '' }
-      ],
-      items: [],
-      isBusy: false,
-      currentPage: 1,
-      totalRows: 0,
-      perPage: 10,
-      curr: null,
-      currDetail: null,
-      item: {}
-    }
-  },
-  filters: {
-    stadium: (value) => STADIUM_LABELS[value],
-    zanr: (value) => ZANR_LABELS[value]
-  },
+  props: ['query', 'cfg'],
+  // filters: { priority, state },
   methods: {
-    myProvider (ctx) {
-      const params = {
-        currentPage: this.currentPage,
-        perPage: this.perPage,
-        sort: ctx.sortBy ? `${ctx.sortBy}:${ctx.sortDesc ? 'desc' : 'asc'}` : 'id:asc'
-      }
-      let data = null
-      return axios.get(`${API}/projectstack/projekty`, { params })
-        .then(res => {
-        this.totalRows = res.data.pagination.total
-          ? res.data.pagination.total : this.totalRows
-        data = res.data.data
-        const uids = _.uniq(
-          _.union(_.map(data, i => i.solver), _.map(data, i => i.owner))
-        )
-        return this.$store.dispatch('loadusers', uids)
-      }).then(res => {
-        return data
-      }).catch(err => {
-        const message = err.response.data
-        this.$store.dispatch('toast', { message, type: 'error' })
-        return []
-      })
+    rowClass: function (row) {
+      return prioClasses[row.prio] || ''
     },
-    setPageSize: function (newSize) {
-      this.perPage = newSize
-    },
-    add: function () {
-      this.$data.curr = null
-      this.$bvModal.show('modal-add')
-    },
-    edit: function (item) {
-      this.$data.curr = item
-      this.$bvModal.show('modal-add')
-    },
-    onItemSubmit: function (item) {
-      this.curr
-        ? Object.assign(this.curr, item)
-        : this.$refs.table.refresh()
-      this.$bvModal.hide('modal-add')
+    dueClass: function (row) {
+      return row.due ? getDueClass(row) : null
     }
   },
-  components: {
-    'item-form': ItemForm
-  },
-  template
+  // components: { Actions },
+  template: `
+  <ACListView :query="query" :cfg="cfg">
+  </ACListView>
+  `
+//   <template v-slot:tbody="{ items, fields }">
+
+//   <tr v-for="row,rowidx in items" :key="rowidx">
+//     <td>{{ row.id }}</td>
+//     <td>{{ row.nazev }}</td>
+//     <td>{{ row.zanr | zanr }}</td>
+//     <td>{{ row.stadium | stadium }}</td>
+//     <td><Actions key="actions" :query="query" :row="row" :cfg="cfg" /></td>
+//   </tr>
+
+// </template>
 }
