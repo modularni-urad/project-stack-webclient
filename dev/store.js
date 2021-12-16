@@ -1,3 +1,4 @@
+import { loadScript, loadStyle } from "./node_modules/modularni-urad-admin-components/script_service.js"
 
 export default (router, cfg) => (new Vuex.Store({
   state: {
@@ -40,6 +41,12 @@ export default (router, cfg) => (new Vuex.Store({
         headers: { 'Authorization': `Bearer ${this.state.user.token}` }
       })
       return axios(opts)
+    },
+    loadScript: function (ctx, src) {
+      return loadScript(src)
+    },
+    loadStyle: function (ctx, src) {
+      return loadStyle(src)
     }
   }
 }))

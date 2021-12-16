@@ -15,7 +15,7 @@ export default [{
   rules: "required"
 }, {
   name: 'poloha',
-  component: "dyn-input",
+  component: "positionInput",
   label: "poloha",
   rules: "required"
 }, {
