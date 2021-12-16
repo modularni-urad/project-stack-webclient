@@ -3,7 +3,9 @@ import { ROUTE_NAMES as NAMES, VIEWNAME } from './src/consts.js'
 import formconfig from './src/formconfig.js'
 
 export function createMenu (user) {
-  return { label: VIEWNAME, to: { name: NAMES.list } }
+  return user.groups.indexOf('project_inserters') >= 0
+    ? { label: VIEWNAME, to: { name: NAMES.list } }
+    : null
 }
 
 export async function setupRoutes (routes, path, cfg, initConfig) {
