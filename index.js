@@ -10,7 +10,7 @@ export function createMenu (user) {
 
 export async function setupRoutes (routes, path, cfg, initConfig) {
   Object.assign(cfg, { 
-    conf: formconfig
+    conf: formconfig(cfg)
   })
   await initConfig(cfg)
   routes.push({ 

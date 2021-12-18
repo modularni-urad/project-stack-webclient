@@ -42,6 +42,8 @@ export const ZANR_LABELS = {
   'sprava': 'Efektivní správa',
   'social': 'Sociál',
   'kultura': 'Kultura',
+  'sport': 'sport',
+  'vzdelavani': 'vzdělávání',
   'volnycas': 'Volný čas'
 }
 export const VIEWNAME = 'projekty'

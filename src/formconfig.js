@@ -1,5 +1,5 @@
 import { STADIUM_LABELS, ZANR_LABELS } from './consts.js'
-export default [{
+export default (cfg) => ([{
   name: 'id',
   fieldcomponent: true, sortable: true
 }, {
@@ -14,6 +14,10 @@ export default [{
   label: "popis",
   rules: "required"
 }, {
+  name: 'poznamka',
+  component: "dyn-textarea",
+  label: "poznámka"
+}, {
   name: 'poloha',
   component: "positionInput",
   label: "poloha",
@@ -21,7 +25,7 @@ export default [{
 }, {
   name: "orgid",
   component: "dyn-select",
-  options: [{ value: 'm.urad', text: 'městský úřad' }],
+  options: cfg.investori_options || [{ value: 'm.urad', text: 'městský úřad' }],
   label: "nositel",
   rules: "required",
   fieldcomponent: true, sortable: true
@@ -42,4 +46,4 @@ export default [{
   label: "žánr",
   rules: "required",
   fieldcomponent: true
-}]
+}])
