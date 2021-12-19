@@ -8,9 +8,17 @@ function pridejMapuProjektu (divid, startLat, startLng, startZoom, backendURL) {
   })
 
   function _makePopupHTML (p) {
-    return '<div><h1>' + p.nazev + '</h1><p>' + p.popis + '</p>'
-      + '<p>Cena: ' + p.cena + '</p>'
-      + '<p>Stadium: ' + p.stadium + '</p></div>'
+    const template = `
+# ${p.nazev}
+
+${p.popis}
+
+${p.poznamka || ''}
+
+## Cena: ${p.cena} mil.
+stadium: ${p.stadium}, žánr: ${p.zanr}.
+    `
+    return marked(template)
   }
 
   function addPoint (point) {

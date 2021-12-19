@@ -8,6 +8,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <link rel="shortcut icon" type="image/x-icon" href="docs/images/favicon.ico" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/0.8.0/marked.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.min.js"></script>
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" 
     integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin=""/>
@@ -27,8 +28,8 @@
   <script>
     var startLat = 49.4100908
     var startLng = 14.6805764
-    var api = 'http://app.local/api'
-    pridejMapuProjektu('mapid', startLat, startLng, 13, api + '/projectstack/projekty')
+    var api = 'https://modurad.otevrenamesta.cz/omstredni/projekty/'
+    pridejMapuProjektu('mapid', startLat, startLng, 13, api)
   </script>
 
 </body>
